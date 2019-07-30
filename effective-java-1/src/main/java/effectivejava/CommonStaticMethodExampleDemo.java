@@ -1,5 +1,6 @@
 package effectivejava;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
@@ -34,7 +35,9 @@ public class CommonStaticMethodExampleDemo {
 
         Path path = Paths.get(System.getProperty("user.dir"));
         printInfo(Files.getFileStore(path));
-        //printInfo(Files.newBufferedReader(path));
+        path = Paths.get(System.getProperty("user.dir")+File.separator+"README.md");
+
+        printInfo(Files.newBufferedReader(path));
 
         StringTokenizer tokenizer = new StringTokenizer("1,2,3",",");
         printInfo(Collections.list(tokenizer));

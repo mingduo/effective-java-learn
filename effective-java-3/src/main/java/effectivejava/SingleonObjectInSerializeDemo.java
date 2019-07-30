@@ -1,5 +1,6 @@
 package effectivejava;
 
+import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 import java.io.*;
@@ -22,8 +23,9 @@ public class SingleonObjectInSerializeDemo {
          * ，并提供一个 readResolve 方法 (条目 89)。否则，每
          * 当序列化实例被反序列化时，就会创建一个新的实例，
          */
-        serialzeObject( SingleonCat.getInstance());
+        serialzeObject( SingleonCat.TOM);
 
+        serialzeObject( SingleonCat3.CAT_3);
 
         serialzeObject( SingleonCat2.getInstance());
 
@@ -41,11 +43,11 @@ public class SingleonObjectInSerializeDemo {
         T curentCat = (T) objectInputStream.readObject();
 
 
-        System.out.println(originalCat );
-        System.out.println(curentCat );
+        System.out.println("before serialize:"+originalCat +"\nbefore serialize address:"+System.identityHashCode(originalCat));
+        System.out.println("after serialize:"+curentCat +"\nafter serialize address:"+System.identityHashCode(curentCat));
 
 
-        System.out.println(originalCat == curentCat );
+        System.out.printf("is serialize : %s\n",(originalCat == curentCat) );
     }
 
 
@@ -55,11 +57,9 @@ class SingleonCat implements Serializable {
 
       String name;
 
-    private static SingleonCat ourInstance = new SingleonCat("TOM");
+    public static SingleonCat TOM = new SingleonCat("TOM");
 
-    public static SingleonCat getInstance() {
-        return ourInstance;
-    }
+
 
     private SingleonCat(String name) {
         this.name=name;
@@ -70,7 +70,7 @@ class SingleonCat implements Serializable {
 @ToString
 class SingleonCat2 implements Serializable {
 
-    transient  String name;
+    /*transient */ String name;
 
     private static SingleonCat2 ourInstance = new SingleonCat2("TOM");
 
@@ -88,4 +88,13 @@ class SingleonCat2 implements Serializable {
 // take care of the Elvis impersonator.
         return ourInstance;
     }
+}
+
+@AllArgsConstructor
+enum SingleonCat3{
+    CAT_3("HELE");
+
+    String name;
+
+
 }

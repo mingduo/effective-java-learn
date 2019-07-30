@@ -1,0 +1,2 @@
+依赖注入优于硬连接资源（hardwiring
+resources）
