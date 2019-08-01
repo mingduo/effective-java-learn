@@ -15,9 +15,9 @@ public class UseCloneDemo {
 
         Axe cloneAxe = (Axe) oriAxe.clone();
         System.out.println(cloneAxe);
-
+        //shallow copy
         System.out.println("cloneAxe==oriAxe : "+(cloneAxe==oriAxe));
-
+        //浅拷贝
         System.out.println(cloneAxe.getName()==oriAxe.getName());
 
 

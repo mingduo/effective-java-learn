@@ -32,7 +32,11 @@
         <module>effective-java-11</module>
         <module>effective-java-12</module>
         <module>effective-java-13</module>
-
+        <module>effective-java-14</module>
+        <!-- 第四章 类和接口-->
+        <module>effective-java-15</module>
+        <module>effective-java-16</module>
+        <module>effective-java-17</module>
 
     </modules>
 
